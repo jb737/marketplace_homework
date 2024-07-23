@@ -1,16 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+//import { useState } from 'react'
 import './App.css'
+import SignUpPage from './pages/SignUpPage/SignUpPage'
+//import { Container } from 'react-bootstrap'
 
-function App() {
- 
+const App = () => {
+  return <SignUpPage/>
+};
 
-  return (
-    <>
-      
-    </>
-  )
-}
-
-export default App
+export default App;
