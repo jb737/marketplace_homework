@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Form, Row, Col } from "react-bootstrap";
+import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Address from "../../models/Address";
 import classes from "./SignUpPage.module.css";
 
@@ -23,6 +23,20 @@ const SignUpPage = (): JSX.Element => {
         country: "",
     });
 
+    const onSubmitHandler = (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        alert(JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password,
+            confirmPassword,
+            dateOfBirth,
+            address
+        })
+    );
+    };
+
     return ( 
     <Container className = {classes.container}>
         <Row> 
@@ -30,7 +44,7 @@ const SignUpPage = (): JSX.Element => {
         </Row>
 
         <Row>
-        <Form>
+        <Form onSubmit = {onSubmitHandler}>
             <fieldset>
             <Row>
                 <Col>
@@ -194,6 +208,9 @@ const SignUpPage = (): JSX.Element => {
                 </Col>
             </Row>
             </fieldset>
+            <Row>
+            <Button className = {classes.submit_btn} type = "submit">Submit Registration</Button>
+            </Row>
         </Form>
         </Row>
     </Container>
