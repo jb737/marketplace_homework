@@ -1,6 +1,16 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    border: 1px solid var(--secondary-color-dark);
+    border-radius: 4px;
+    padding: 20px;
+    background-color: lightgrey;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
 }

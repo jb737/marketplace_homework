@@ -23,11 +23,10 @@ const SignUpPage = (): JSX.Element => {
         country: "",
     });
 
-    return <Container className= {classes.container}>
-        <Row>
-            <Col>
-           <h3>Sign Up</h3>
-           </Col>
+    return ( 
+    <Container className = {classes.container}>
+        <Row> 
+           <h3 className={classes.title}>Sign Up</h3>
         </Row>
 
         <Row>
@@ -43,7 +42,8 @@ const SignUpPage = (): JSX.Element => {
                     value = {firstName}
                     onChange = {(e) => setFirstName(e.target.value)}
                 />
-              
+                </Col>
+                <Col>
             <Form.Label htmlFor = "lastName">Last Name: </Form.Label>
                 <Form.Control
                     type = "text"
@@ -52,7 +52,8 @@ const SignUpPage = (): JSX.Element => {
                     value = {lastName}
                     onChange = {(e) => setLastName(e.target.value)}
                 />
-              
+                </Col>
+                <Col>
             <Form.Label htmlFor = "dateOfBirth">Date of Birth: </Form.Label>
                 <Form.Control
                     type = "date"
@@ -80,7 +81,8 @@ const SignUpPage = (): JSX.Element => {
                         }))
                     }
                     />
-
+                </Col>
+                <Col>
                     <Form.Label htmlFor = "streetName">Street Name: </Form.Label>
                     <Form.Control
                         type = "text"
@@ -93,7 +95,8 @@ const SignUpPage = (): JSX.Element => {
                         }))
                     }
                     />
-
+                </Col>
+                <Col>
                     <Form.Label htmlFor = "city">City: </Form.Label>
                     <Form.Control
                         type = "text"
@@ -125,7 +128,8 @@ const SignUpPage = (): JSX.Element => {
                         }))
                     }
                     />
-
+                </Col>
+                <Col>
                     <Form.Label htmlFor = "zip">Zip/Postal Code: </Form.Label>
                     <Form.Control
                         type = "text"
@@ -138,7 +142,8 @@ const SignUpPage = (): JSX.Element => {
                         }))
                     }
                     />
-
+                </Col>
+                <Col>
                     <Form.Label htmlFor = "country">Country: </Form.Label>
                     <Form.Control
                         type = "text"
@@ -158,38 +163,41 @@ const SignUpPage = (): JSX.Element => {
             <fieldset>
             <Row>
                 <Col>
-            <Form.Label htmlFor = "password">Password: </Form.Label>
-                <Form.Control
-                    type = "password"
-                    id = "password"
-                    required
-                    value = {password}
-                    onChange = {(e) => setPassword(e.target.value)}
-                />
-
-            <Form.Label htmlFor = "confirmPassword">Confirm Password: </Form.Label>
-                <Form.Control
-                    type = "confirmPassword"
-                    id = "confirmPassword"
-                    required
-                    value = {confirmPassword}
-                    onChange = {(e) => setConfirmPassword(e.target.value)}
-                />
-
-                <Form.Label htmlFor = "email">e-mail: </Form.Label>
-                <Form.Control
-                    type = "email"
-                    id = "email"
-                    required
-                    value = {email}
-                    onChange = {(e) => setEmail(e.target.value)}
-                />
+                    <Form.Label htmlFor = "password">Password: </Form.Label>
+                    <Form.Control
+                        type = "password"
+                        id = "password"
+                        required
+                        value = {password}
+                        onChange = {(e) => setPassword(e.target.value)}
+                    />
+                </Col>
+                <Col>
+                    <Form.Label htmlFor = "confirmPassword">Confirm Password: </Form.Label>
+                    <Form.Control
+                        type = "confirmPassword"
+                        id = "confirmPassword"
+                        required
+                        value = {confirmPassword}
+                        onChange = {(e) => setConfirmPassword(e.target.value)}
+                    />
+                </Col>
+                <Col>
+                    <Form.Label htmlFor = "email">e-mail: </Form.Label>
+                    <Form.Control
+                        type = "email"
+                        id = "email"
+                        required
+                        value = {email}
+                        onChange = {(e) => setEmail(e.target.value)}
+                    />
                 </Col>
             </Row>
             </fieldset>
         </Form>
         </Row>
     </Container>
-};
+)};
+
 
 export default SignUpPage;
