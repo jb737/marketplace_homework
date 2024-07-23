@@ -28,6 +28,10 @@ body {
     background-color: var(--primary-color-light);
 }
 
+.invalid-feedback {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 
   
   
