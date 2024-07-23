@@ -2,12 +2,16 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Address from "../../models/Address";
 import classes from "./SignUpPage.module.css";
+import FormInput from "../../components/FormInput/FormInput";
 
 
 //TODO: set min DOB to be 18 years old
 //TODO: password match
 
 const SignUpPage = (): JSX.Element => {
+    const [validated, setValidated] = useState(false);
+
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -23,8 +27,27 @@ const SignUpPage = (): JSX.Element => {
         country: "",
     });
 
-    const onSubmitHandler = (e : React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const onSubmitHandler = (event : React.FormEvent<HTMLFormElement>) => {
+        const form = event.currentTarget;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        
+
+        if (form.checkValidity() === false) {
+            alert("Please Fill All Required Fields");
+            setValidated(true);
+            return;
+        }
+
+    
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match. Passwords must match.");
+            return;
+        }
+
         alert(JSON.stringify({
             firstName,
             lastName,
@@ -44,38 +67,35 @@ const SignUpPage = (): JSX.Element => {
         </Row>
 
         <Row>
-        <Form onSubmit = {onSubmitHandler}>
+        <Form noValidate  validated={validated} onSubmit = {onSubmitHandler}>
             <fieldset>
             <Row>
                 <Col>
-            <Form.Label htmlFor = "firstName">First Name: </Form.Label>
-                <Form.Control
+                <FormInput
                     type = "text"
-                    id = "firstName"
-                    required
+                    required 
+                    title = "First Name"
                     value = {firstName}
                     onChange = {(e) => setFirstName(e.target.value)}
-                />
+                    />
                 </Col>
                 <Col>
-            <Form.Label htmlFor = "lastName">Last Name: </Form.Label>
-                <Form.Control
+                <FormInput
                     type = "text"
-                    id = "lastName"
                     required
+                    title = "Last Name"
                     value = {lastName}
-                    onChange = {(e) => setLastName(e.target.value)}
-                />
+                    onChange={(e) => setLastName(e.target.value)}
+                    />
                 </Col>
                 <Col>
-            <Form.Label htmlFor = "dateOfBirth">Date of Birth: </Form.Label>
-                <Form.Control
+                <FormInput
                     type = "date"
-                    id = "dateOfBirth"
                     required
-                    value = {dateOfBirth?.toISOString().split("T")[0] ?? ""}
-                    onChange = {(e) => setDateOfBirth(new Date(e.target.value))}
-                />
+                    title = "Date of Birth"
+                    value = {dateOfBirth}
+                    onChange={(e) => setDateOfBirth(new Date(e.target.value))}
+                    />
                 </Col>
             </Row>
             </fieldset>
@@ -83,45 +103,39 @@ const SignUpPage = (): JSX.Element => {
             <fieldset>
             <Row>
                 <Col>
-                    <Form.Label htmlFor = "streetNumber">Street Number: </Form.Label>
-                    <Form.Control
-                        type = "text"
-                        id = "streetNumber"
-                        required
-                        value = {address.number}
-                        onChange = {(e) => setAddress((prevState) => ({
-                            ...prevState,
-                            number: e.target.value,
-                        }))
-                    }
+                <FormInput
+                    type = "text"
+                    required
+                    title = "Street Number"
+                    value = {address.number}
+                    onChange={(e) =>  setAddress((prevState) => ({
+                        ...prevState,
+                        number: e.target.value,
+                    }))}
                     />
                 </Col>
                 <Col>
-                    <Form.Label htmlFor = "streetName">Street Name: </Form.Label>
-                    <Form.Control
-                        type = "text"
-                        id = "streetName"
-                        required
-                        value = {address.street}
-                        onChange = {(e) => setAddress((prevState) => ({
-                            ...prevState,
-                            street: e.target.value,
-                        }))
-                    }
+                <FormInput
+                    type = "text"
+                    required
+                    title = "Street Name"
+                    value = {address.street}
+                    onChange={(e) =>  setAddress((prevState) => ({
+                        ...prevState,
+                        street: e.target.value,
+                    }))}
                     />
                 </Col>
                 <Col>
-                    <Form.Label htmlFor = "city">City: </Form.Label>
-                    <Form.Control
-                        type = "text"
-                        id = "city"
-                        required
-                        value = {address.city}
-                        onChange = {(e) => setAddress((prevState) => ({
-                            ...prevState,
-                            city: e.target.value,
-                        }))
-                    }
+                <FormInput
+                    type = "text"
+                    required
+                    title = "City / Town / Municipality"
+                    value = {address.city}
+                    onChange={(e) =>  setAddress((prevState) => ({
+                        ...prevState,
+                        city: e.target.value,
+                    }))}
                     />
                 </Col>
                 </Row>
@@ -130,45 +144,39 @@ const SignUpPage = (): JSX.Element => {
                 <fieldset>
                 <Row>
                 <Col>
-                    <Form.Label htmlFor = "state">State/Province: </Form.Label>
-                    <Form.Control
-                        type = "text"
-                        id = "state"
-                        required
-                        value = {address.state}
-                        onChange = {(e) => setAddress((prevState) => ({
-                            ...prevState,
-                            state: e.target.value,
-                        }))
-                    }
+                <FormInput
+                    type = "text"
+                    required
+                    title = "State / Province / Territory"
+                    value = {address.state}
+                    onChange={(e) =>  setAddress((prevState) => ({
+                        ...prevState,
+                        state: e.target.value,
+                    }))}
                     />
                 </Col>
                 <Col>
-                    <Form.Label htmlFor = "zip">Zip/Postal Code: </Form.Label>
-                    <Form.Control
-                        type = "text"
-                        id = "zip"
-                        required
-                        value = {address.zip}
-                        onChange = {(e) => setAddress((prevState) => ({
-                            ...prevState,
-                            zip: e.target.value,
-                        }))
-                    }
+                <FormInput
+                    type = "text"
+                    required
+                    title = "Zip / Postal Code"
+                    value = {address.zip}
+                    onChange={(e) =>  setAddress((prevState) => ({
+                        ...prevState,
+                        zip: e.target.value,
+                    }))}
                     />
                 </Col>
                 <Col>
-                    <Form.Label htmlFor = "country">Country: </Form.Label>
-                    <Form.Control
-                        type = "text"
-                        id = "country"
-                        required
-                        value = {address.country}
-                        onChange = {(e) => setAddress((prevState) => ({
-                            ...prevState,
-                            country: e.target.value,
-                        }))
-                    }
+                <FormInput
+                    type = "text"
+                    required
+                    title = "Country"
+                    value = {address.country}
+                    onChange={(e) =>  setAddress((prevState) => ({
+                        ...prevState,
+                        country: e.target.value,
+                    }))}
                     />
                 </Col>
             </Row>
@@ -177,33 +185,30 @@ const SignUpPage = (): JSX.Element => {
             <fieldset>
             <Row>
                 <Col>
-                    <Form.Label htmlFor = "password">Password: </Form.Label>
-                    <Form.Control
-                        type = "password"
-                        id = "password"
-                        required
-                        value = {password}
-                        onChange = {(e) => setPassword(e.target.value)}
+                <FormInput
+                    type = "text"
+                    required
+                    title = "Password"
+                    value = {password}
+                    onChange={(e) => setPassword(e.target.value)}
                     />
                 </Col>
                 <Col>
-                    <Form.Label htmlFor = "confirmPassword">Confirm Password: </Form.Label>
-                    <Form.Control
-                        type = "confirmPassword"
-                        id = "confirmPassword"
-                        required
-                        value = {confirmPassword}
-                        onChange = {(e) => setConfirmPassword(e.target.value)}
+                <FormInput
+                    type = "text"
+                    required
+                    title = "Confirm Password"
+                    value = {confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                 </Col>
                 <Col>
-                    <Form.Label htmlFor = "email">e-mail: </Form.Label>
-                    <Form.Control
-                        type = "email"
-                        id = "email"
-                        required
-                        value = {email}
-                        onChange = {(e) => setEmail(e.target.value)}
+                <FormInput
+                    type = "text"
+                    required
+                    title = "E-Mail"
+                    value = {email}
+                    onChange={(e) => setEmail(e.target.value)}
                     />
                 </Col>
             </Row>
