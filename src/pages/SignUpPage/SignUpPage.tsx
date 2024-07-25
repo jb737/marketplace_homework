@@ -62,7 +62,7 @@ const SignUpPage = (): JSX.Element => {
     };
 
     return ( 
-    <Container className = {classes.container}>
+    <Container className = {classes.container + " center"}>
         <Row> 
            <h3 className={classes.title}>Sign Up</h3>
         </Row>
@@ -214,7 +214,7 @@ const SignUpPage = (): JSX.Element => {
                     />
                 </Col>
                 </Row>
-                {password !== confirmPassword && <Row className = {classes.error_message}>Passwords do not match</Row>}
+                {password !== confirmPassword && <Row className = {classes.error_message + " error_text"}>Passwords do not match</Row>}
             </fieldset>
             <Row>
             <Button disabled = {(password !== confirmPassword) || !email} className = {classes.submit_btn} type = "submit">Submit Registration</Button>
@@ -226,3 +226,5 @@ const SignUpPage = (): JSX.Element => {
 
 
 export default SignUpPage;
+
+//TODO: Find out about applying styles from index.css. Do i need to import that file?

@@ -22,11 +22,6 @@
     font-style: normal;
 }
 
-
-body {
-    background-color: rgb(118, 113, 113);
-}
-
 .center {
     position: absolute;
     top: 50%;
@@ -54,9 +49,13 @@ body {
     background-color: var(--primary-color-light);
 }
 
-.invalid-feedback {
+.invalid-feedback,
+ .error_text {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:  red;
+    font-weight: bold;
 }
+
 
 
   

@@ -1,0 +1,10 @@
+.container {
+    min-height: 100vh;
+    background-color: var(--primary-color-dark);
+    padding: 30px;
+}
+
+.color_mode_button {
+    position: absolute;
+    right: 5vw;
+}
