@@ -5,8 +5,6 @@ import classes from "./SignUpPage.module.css";
 import FormInput from "../../components/FormInput/FormInput";
 
 
-//TODO: set min DOB to be 18 years old
-
 const SignUpPage = (): JSX.Element => {
     const [validated, setValidated] = useState(false);
 

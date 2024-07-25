@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
+:root {
+    --primary-color-light: #dbd8e3;
+    --primary-color-dark: #5c5470; 
+    --secondary-color-light: #352f44; 
+    --secondary-color-dark: #2a2438;
+}
+
+[data-theme = "dark"] {
+    --primary-color-light: #9ec5d0; 
+    --primary-color-dark: #ff6f3c;  
+    --secondary-color-light: #ff9a3c; 
+    --secondary-color-dark: #ffc93c; 
+}
 
 
 * {
@@ -9,8 +22,9 @@
     font-style: normal;
 }
 
+
 body {
-    background-color:var(--secondary-color-light);
+    background-color: rgb(118, 113, 113);
 }
 
 .center {
