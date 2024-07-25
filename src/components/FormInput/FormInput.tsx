@@ -8,14 +8,25 @@ interface FormInputProps {
     value?: string | number | Date;
     placeholder?: string;
     errorMessage?: string;
+    max?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export default function FormInput({title, type, required, id, value, placeholder, errorMessage, onChange,}:FormInputProps):JSX.Element {
+export default function FormInput({
+    title, 
+    type, 
+    required, 
+    id, 
+    value, 
+    placeholder, 
+    errorMessage,
+    max, 
+    onChange, 
+    onBlur = () => {},}:FormInputProps):JSX.Element {
     id = id ? id : title;
 
     const valueString = value instanceof Date ? value.toISOString().split("T")[0] : value;
-
 
     return (
         <>
@@ -26,7 +37,9 @@ export default function FormInput({title, type, required, id, value, placeholder
                     required = {required}
                     value = {valueString}
                     placeholder = {placeholder}
+                    max = {max}
                     onChange = {onChange}
+                    onBlur = {onBlur}
                 />
                  <Form.Control.Feedback type="invalid">
                     {required && !errorMessage ? "Required Field" : errorMessage}

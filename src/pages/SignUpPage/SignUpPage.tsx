@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { Container, Form, Row, Col, Button, } from "react-bootstrap";
 import Address from "../../models/Address";
 import classes from "./SignUpPage.module.css";
 import FormInput from "../../components/FormInput/FormInput";
 
 
 //TODO: set min DOB to be 18 years old
-//TODO: password match
 
 const SignUpPage = (): JSX.Element => {
     const [validated, setValidated] = useState(false);
@@ -35,16 +34,14 @@ const SignUpPage = (): JSX.Element => {
 
         
 
+
         if (form.checkValidity() === false) {
-            alert("Please Fill All Required Fields");
             setValidated(true);
             return;
         }
 
-    
-
         if (password !== confirmPassword) {
-            alert("Passwords do not match. Passwords must match.");
+            alert("Passwords do not match");
             return;
         }
 
@@ -60,6 +57,12 @@ const SignUpPage = (): JSX.Element => {
     );
     };
 
+    const getMaxDate = () => {
+        const date = new Date();
+        date.setFullYear(date.getFullYear() -18);
+        return date;
+    };
+
     return ( 
     <Container className = {classes.container}>
         <Row> 
@@ -69,14 +72,14 @@ const SignUpPage = (): JSX.Element => {
         <Row>
         <Form noValidate  validated={validated} onSubmit = {onSubmitHandler}>
             <fieldset>
-            <Row>
+                <Row>
                 <Col>
                 <FormInput
                     type = "text"
                     required 
                     title = "First Name"
                     value = {firstName}
-                    onChange = {(e) => setFirstName(e.target.value)}
+                    onChange = {(e) => setFirstName(e.target.value.trim())}
                     />
                 </Col>
                 <Col>
@@ -85,7 +88,7 @@ const SignUpPage = (): JSX.Element => {
                     required
                     title = "Last Name"
                     value = {lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={(e) => setLastName(e.target.value.trim())}
                     />
                 </Col>
                 <Col>
@@ -95,13 +98,14 @@ const SignUpPage = (): JSX.Element => {
                     title = "Date of Birth"
                     value = {dateOfBirth}
                     onChange={(e) => setDateOfBirth(new Date(e.target.value))}
+                    max = {getMaxDate().toISOString().split("T")[0]}
                     />
                 </Col>
-            </Row>
+                </Row>
             </fieldset>
 
             <fieldset>
-            <Row>
+                <Row>
                 <Col>
                 <FormInput
                     type = "text"
@@ -110,7 +114,7 @@ const SignUpPage = (): JSX.Element => {
                     value = {address.number}
                     onChange={(e) =>  setAddress((prevState) => ({
                         ...prevState,
-                        number: e.target.value,
+                        number: e.target.value.trim(),
                     }))}
                     />
                 </Col>
@@ -122,7 +126,7 @@ const SignUpPage = (): JSX.Element => {
                     value = {address.street}
                     onChange={(e) =>  setAddress((prevState) => ({
                         ...prevState,
-                        street: e.target.value,
+                        street: e.target.value.trim(),
                     }))}
                     />
                 </Col>
@@ -134,14 +138,14 @@ const SignUpPage = (): JSX.Element => {
                     value = {address.city}
                     onChange={(e) =>  setAddress((prevState) => ({
                         ...prevState,
-                        city: e.target.value,
+                        city: e.target.value.trim(),
                     }))}
                     />
                 </Col>
                 </Row>
-                </fieldset>
+            </fieldset>
 
-                <fieldset>
+            <fieldset>
                 <Row>
                 <Col>
                 <FormInput
@@ -151,7 +155,7 @@ const SignUpPage = (): JSX.Element => {
                     value = {address.state}
                     onChange={(e) =>  setAddress((prevState) => ({
                         ...prevState,
-                        state: e.target.value,
+                        state: e.target.value.trim(),
                     }))}
                     />
                 </Col>
@@ -163,7 +167,7 @@ const SignUpPage = (): JSX.Element => {
                     value = {address.zip}
                     onChange={(e) =>  setAddress((prevState) => ({
                         ...prevState,
-                        zip: e.target.value,
+                        zip: e.target.value.trim(),
                     }))}
                     />
                 </Col>
@@ -175,46 +179,47 @@ const SignUpPage = (): JSX.Element => {
                     value = {address.country}
                     onChange={(e) =>  setAddress((prevState) => ({
                         ...prevState,
-                        country: e.target.value,
+                        country: e.target.value.trim(),
                     }))}
                     />
                 </Col>
-            </Row>
+                </Row>
             </fieldset>
 
             <fieldset>
             <Row>
-                <Col>
-                <FormInput
-                    type = "text"
-                    required
-                    title = "Password"
-                    value = {password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    />
-                </Col>
-                <Col>
-                <FormInput
-                    type = "text"
-                    required
-                    title = "Confirm Password"
-                    value = {confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                </Col>
-                <Col>
+            <Col>
                 <FormInput
                     type = "text"
                     required
                     title = "E-Mail"
                     value = {email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value.trim())}
                     />
                 </Col>
-            </Row>
+                <Col>
+                <FormInput
+                    type = "password"
+                    required
+                    title = "Password"
+                    value = {password}
+                    onChange={(e) => setPassword(e.target.value.trim())}
+                    />
+                </Col>
+                <Col>
+                <FormInput
+                    type = "password"
+                    required
+                    title = "Confirm Password"
+                    value = {confirmPassword}
+                    onChange = {(e) => setConfirmPassword(e.target.value.trim())}
+                    />
+                </Col>
+                </Row>
+                {password !== confirmPassword && <Row className = {classes.error_message}>Passwords do not match</Row>}
             </fieldset>
             <Row>
-            <Button className = {classes.submit_btn} type = "submit">Submit Registration</Button>
+            <Button disabled = {(password !== confirmPassword) || !email} className = {classes.submit_btn} type = "submit">Submit Registration</Button>
             </Row>
         </Form>
         </Row>
