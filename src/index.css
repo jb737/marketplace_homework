@@ -41,12 +41,16 @@
     box-shadow: none;
 }
 
-.btn-primary{
+.btn.btn-primary{
     background-color:var( --primary-color-dark);
 }
 
-.btn-primary:hover{
+.btn.btn-primary:hover{
     background-color: var(--primary-color-light);
+}
+
+.btn.btn-primary:disabled {
+    background-color: gray;
 }
 
 .color_mode_button {

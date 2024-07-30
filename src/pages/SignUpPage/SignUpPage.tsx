@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Button, } from "react-bootstrap";
 import Address from "../../models/Address";
 import classes from "./SignUpPage.module.css";
 import FormInput from "../../components/FormInput/FormInput";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const SignUpPage = (): JSX.Element => {
@@ -47,8 +47,6 @@ const SignUpPage = (): JSX.Element => {
         event.stopPropagation();
 
         
-
-
         if (form.checkValidity() === false) {
             setValidated(true);
             return;
@@ -197,8 +195,8 @@ const SignUpPage = (): JSX.Element => {
             </fieldset>
 
             <fieldset>
-            <Row>
-            <Col>
+                <Row>
+                <Col>
                 <FormInput
                     type = "text"
                     required
@@ -233,10 +231,11 @@ const SignUpPage = (): JSX.Element => {
             </div>
         </Form>
         </Row>
+        <Row className = {classes.footer}>
+            <p>Already have an account? </p><Link to = "/login">Log In here:</Link>
+        </Row>
     </Container>
 )};
 
 
 export default SignUpPage;
-
-//TODO: Find out about applying styles from index.css. Do i need to import that file?
