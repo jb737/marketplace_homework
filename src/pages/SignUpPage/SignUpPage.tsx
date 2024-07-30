@@ -3,9 +3,11 @@ import { Container, Form, Row, Col, Button, } from "react-bootstrap";
 import Address from "../../models/Address";
 import classes from "./SignUpPage.module.css";
 import FormInput from "../../components/FormInput/FormInput";
+import { useNavigate } from "react-router-dom";
 
 
 const SignUpPage = (): JSX.Element => {
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
 
 
@@ -57,16 +59,17 @@ const SignUpPage = (): JSX.Element => {
             return;
         }
 
-        alert(JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            password,
-            confirmPassword,
-            dateOfBirth,
-            address
-        })
-    );
+       navigate("/", {
+        state: {
+            user: {
+                firstName,
+                lastName,
+                email,
+                dateOfBirth,
+                address,
+            }//we are navigating across pages and sending the user object as a piece of state
+        }
+       })
     };
 
 

@@ -21,3 +21,8 @@
     border-radius: 4px;
     padding: 20px;
 }
+
+.container a:hover {
+    background-color: var(--primary-color-light);
+    border: 1px solid var(--secondary-color-dark);
+}
