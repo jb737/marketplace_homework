@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Container, Form, Row, Col, Button, } from "react-bootstrap";
 import Address from "../../models/Address";
 import classes from "./SignUpPage.module.css";
@@ -23,6 +23,20 @@ const SignUpPage = (): JSX.Element => {
         zip: "",
         country: "",
     });
+//this is useCallback. It rerenders when a new date of birth is entered and returns a function
+    //const getAgeDateLimit = useCallback (() => {
+    //    const date = new Date();
+   //     date.setFullYear(date.getFullYear() -18);
+    //    return date;
+    //}, []);
+
+    //this is useMemo. Memoization to avoid recreating the date object on every render. It stores a value, aka cache
+    const dateOfBirthLimit = useMemo(() => {
+        const date = new Date();
+        date.setFullYear(date.getFullYear() -18);
+        return date;
+    }, []);
+
 
     const onSubmitHandler = (event : React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
@@ -55,11 +69,6 @@ const SignUpPage = (): JSX.Element => {
     );
     };
 
-    const getMaxDate = () => {
-        const date = new Date();
-        date.setFullYear(date.getFullYear() -18);
-        return date;
-    };
 
     return ( 
     <Container className = {classes.container + " center"}>
@@ -94,9 +103,9 @@ const SignUpPage = (): JSX.Element => {
                     type = "date"
                     required
                     title = "Date of Birth"
-                    value = {dateOfBirth}
+                    value = {dateOfBirth ?? ""}
                     onChange={(e) => setDateOfBirth(new Date(e.target.value))}
-                    max = {getMaxDate().toISOString().split("T")[0]}
+                    max = {dateOfBirthLimit.toISOString().split("T")[0]}
                     />
                 </Col>
                 </Row>
@@ -216,9 +225,9 @@ const SignUpPage = (): JSX.Element => {
                 </Row>
                 {password !== confirmPassword && <Row className = {classes.error_message + " error_text"}>Passwords do not match</Row>}
             </fieldset>
-            <Row>
-            <Button disabled = {(password !== confirmPassword) || !email} className = {classes.submit_btn} type = "submit">Submit Registration</Button>
-            </Row>
+            <div className = {classes.submit_btn_container}>
+            <Button disabled = { (password !== confirmPassword) || !email } className = {classes.submit_btn} type = "submit">Submit Registration</Button>
+            </div>
         </Form>
         </Row>
     </Container>

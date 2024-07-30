@@ -1,0 +1,11 @@
+ const [theme, setTheme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
+
+ <div className = {classes.container} data-theme = {theme}>
+ <button className = {classes.color_mode_button} type = "button" onClick = {() => 
+ setTheme((currentTheme) => (currentTheme === "dark" ? "" : "dark"))
+ }
+ >
+ Change Color Palette
+ </button>
+<SignUpPage/>
+</div>

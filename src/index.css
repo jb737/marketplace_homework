@@ -8,10 +8,10 @@
 }
 
 [data-theme = "dark"] {
-    --primary-color-light: #9ec5d0; 
-    --primary-color-dark: #ff6f3c;  
-    --secondary-color-light: #ff9a3c; 
-    --secondary-color-dark: #ffc93c; 
+    --primary-color-light:  #b7b7b7; 
+    --primary-color-dark:  #3d0240;  
+    --secondary-color-light:#fae3e3; 
+    --secondary-color-dark:   #137083; 
 }
 
 
@@ -49,12 +49,18 @@
     background-color: var(--primary-color-light);
 }
 
+.color_mode_button {
+    position: absolute;
+    height: 10vw;
+}
+
 .invalid-feedback,
  .error_text {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color:  red;
-    font-weight: bold;
+
 }
+
 
 
 
