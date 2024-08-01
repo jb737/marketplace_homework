@@ -1,3 +1,8 @@
+.page_container {
+    min-height: 100vh; 
+   background-color: var(--secondary-color-dark); 
+ }
+
 .submit_btn_container {
     display: flex;
     justify-content: center;

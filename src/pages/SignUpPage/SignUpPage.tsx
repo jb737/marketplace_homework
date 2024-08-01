@@ -227,8 +227,10 @@ const SignUpPage = (): JSX.Element => {
     const footer =  <p>Already have an account?<Link to = "/login">Log In here:</Link></p>
 
     return ( 
+        <div className = {classes.page_container}>
+        <CustomCard title = "Sign-Up:" content = {form} footer = {footer} /> 
+        </div>
 
-        <CustomCard title = "Sign-Up" content = {form} footer = {footer} />   
 )};
 
 
