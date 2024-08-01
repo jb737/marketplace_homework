@@ -1,13 +1,18 @@
 import { useMemo, useState } from "react";
 import { Form, Row, Col, Button, } from "react-bootstrap";
-import Address from "../../models/Address";
-import classes from "./SignUpPage.module.css";
-import FormInput from "../../components/FormInput/FormInput";
 import { Link, useNavigate } from "react-router-dom";
+
+import Address from "../../models/Address";
+import FormInput from "../../components/FormInput/FormInput";
 import CustomCard from "../../components/CustomCard/CustomCard";
+
+import classes from "./SignUpPage.module.css";
 
 
 const SignUpPage = (): JSX.Element => {
+
+    const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
+
     const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
 
@@ -26,14 +31,7 @@ const SignUpPage = (): JSX.Element => {
         zip: "",
         country: "",
     });
-//this is useCallback. It rerenders when a new date of birth is entered and returns a function
-    //const getAgeDateLimit = useCallback (() => {
-    //    const date = new Date();
-   //     date.setFullYear(date.getFullYear() -18);
-    //    return date;
-    //}, []);
 
-    //this is useMemo. Memoization to avoid recreating the date object on every render. It stores a value, aka cache
     const dateOfBirthLimit = useMemo(() => {
         const date = new Date();
         date.setFullYear(date.getFullYear() -18);
@@ -66,7 +64,7 @@ const SignUpPage = (): JSX.Element => {
                 email,
                 dateOfBirth,
                 address,
-            }//we are navigating across pages and sending the user object as a piece of state
+            }
         }
        })
     };
@@ -224,10 +222,10 @@ const SignUpPage = (): JSX.Element => {
     </div>
 </Form>
 
-    const footer =  <p>Already have an account?<Link to = "/login">Log In here:</Link></p>
+    const footer =  <p>Already have an account?<Link to = "/account/login">Log In here:</Link></p>
 
     return ( 
-        <div className = {classes.page_container}>
+        <div className = {classes.page_container} data-theme = {theme}>
         <CustomCard title = "Sign-Up:" content = {form} footer = {footer} /> 
         </div>
 

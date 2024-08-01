@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navbar, Container, Nav} from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { RiAuctionLine } from "react-icons/ri";
 import { TiMessages } from "react-icons/ti";
@@ -9,33 +10,30 @@ import { CiLogout } from "react-icons/ci";
 
 import classes from "./Layout.module.css"
 
-interface LayoutProps {
-    children: React.ReactNode;
-}
 
-export default function Layout({children}: LayoutProps) {
+export default function Layout() {
     const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
 
     return (
    
         <div className = {classes.page_container}  data-theme = {theme}>
-            <Navbar expand="lg" className={classes.navbar}>
+            <Navbar expand = "lg" className = {classes.navbar}>
         <Container>
         <Link to = "/">
             {" "}
             <img
-              src="src/Assets/shopping-bag.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-              alt="MERN Shop logo"
+              src = "src/Assets/shopping-bag.png"
+              width = "30"
+              height = "30"
+              className = "d-inline-block align-top"
+              alt = "MERN Shop logo"
             />
         </Link>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls = "basic-navbar-nav" />
 
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className={classes.nav_item_container+ " me-auto"}>
+        <Navbar.Collapse id = "basic-navbar-nav">
+          <Nav className = {classes.nav_item_container+ " me-auto"}>
             <NavLink to = "/shop">
             <MdOutlineShoppingCart />Shop</NavLink>
             <NavLink to = "/posts">
@@ -43,10 +41,10 @@ export default function Layout({children}: LayoutProps) {
             <NavLink to = "/messages">
             <TiMessages />Messages</NavLink>
           </Nav>
-          <Nav  className={classes.nav_item_container}>
+          <Nav  className = {classes.nav_item_container}>
             <NavLink to = "/settings" >
             <IoSettingsOutline />Settings</NavLink>
-            <NavLink to = "/login" >
+            <NavLink to = "/account/login" >
             <CiLogout />Log Out</NavLink>
 
           </Nav>
@@ -54,7 +52,7 @@ export default function Layout({children}: LayoutProps) {
       </Container>
     </Navbar>
     
-    <Container fluid className = {classes.content_container}> {children}</Container>
+    <Container fluid><Outlet /></Container>
   
   </div>
   );
