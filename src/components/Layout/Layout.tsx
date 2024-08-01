@@ -17,6 +17,7 @@ export default function Layout({children}: LayoutProps) {
     const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
 
     return (
+   
         <div className = {classes.page_container}  data-theme = {theme}>
             <Navbar expand="lg" className={classes.navbar}>
         <Container>
@@ -52,8 +53,9 @@ export default function Layout({children}: LayoutProps) {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <Container> {children}</Container>
-   
-        </div>
-    );
+    
+    <Container fluid className = {classes.content_container}> {children}</Container>
+  
+  </div>
+  );
 }
