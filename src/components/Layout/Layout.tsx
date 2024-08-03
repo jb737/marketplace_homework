@@ -16,9 +16,9 @@ export default function Layout() {
 
     return (
    
-        <div className = {classes.page_container}  data-theme = {theme}>
-            <Navbar expand = "lg" className = {classes.navbar}>
-        <Container>
+    <div className = {classes.page_container}  data-theme = {theme}>
+      <Navbar expand = "lg" className = {classes.navbar}>
+        <Container fluid>
         <Link to = "/">
             {" "}
             <img
@@ -30,9 +30,9 @@ export default function Layout() {
             />
         </Link>
 
-        <Navbar.Toggle aria-controls = "basic-navbar-nav" />
+      <Navbar.Toggle aria-controls = "basic-navbar-nav" />
 
-        <Navbar.Collapse id = "basic-navbar-nav">
+      <Navbar.Collapse id = "basic-navbar-nav">
           <Nav className = {classes.nav_item_container+ " me-auto"}>
             <NavLink to = "/shop">
             <MdOutlineShoppingCart />Shop</NavLink>
@@ -49,8 +49,8 @@ export default function Layout() {
 
           </Nav>
         </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        </Container>
+      </Navbar>
     
     <Container fluid><Outlet /></Container>
   

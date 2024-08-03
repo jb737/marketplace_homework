@@ -218,7 +218,7 @@ const SignUpPage = (): JSX.Element => {
         {password !== confirmPassword && <Row className = {classes.error_message + " error_text"}>Passwords do not match</Row>}
     </fieldset>
     <div className = {classes.submit_btn_container}>
-    <Button disabled = { (password !== confirmPassword) || !email } className = {classes.submit_btn} type = "submit">Submit Registration</Button>
+    <Button disabled = { (password !== confirmPassword) || !email } className = {classes.submit_btn} type = "submit">Register</Button>
     </div>
 </Form>
 
