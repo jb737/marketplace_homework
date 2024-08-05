@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Navbar, Container, Nav} from "react-bootstrap";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
-import { MdOutlineShoppingCart } from "react-icons/md";
 import { RiAuctionLine } from "react-icons/ri";
 import { TiMessages } from "react-icons/ti";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -34,8 +33,6 @@ export default function Layout() {
 
       <Navbar.Collapse id = "basic-navbar-nav">
           <Nav className = {classes.nav_item_container+ " me-auto"}>
-            <NavLink to = "/shop">
-            <MdOutlineShoppingCart />Shop</NavLink>
             <NavLink to = "/posts">
             <RiAuctionLine />My Posts</NavLink>
             <NavLink to = "/messages">
