@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 
@@ -20,7 +20,7 @@ export default function LandingPage() {
     const [productsOnPage, setProductsOnPage] = useState<Product[]>(dummyProducts.slice(0, PRODUCTS_PER_PAGE));
     const [activePage, setActivePage] = useState<number>(1);
 
-    const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
+    const totalPages = useMemo(() => Math.ceil(products.length / PRODUCTS_PER_PAGE),[products.length]);
 
     const onPageChangeHandler = useCallback((pageNumber: number) => {
         const start = (pageNumber - 1) * PRODUCTS_PER_PAGE;
