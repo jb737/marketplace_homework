@@ -5,14 +5,14 @@ import { Container, Row } from "react-bootstrap";
 import User from "../../models/User";
 import Product from "../../models/Product";
 import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
-import classes from "./LandingPage.module.css";
+import classes from "./ProductsPage.module.css";
 import dummyProducts from "../../dummyData/dummyProducts";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
 
 
 const PRODUCTS_PER_PAGE = 3;//usually all caps means configuration, should never change
 
-export default function LandingPage() {
+export default function ProductsPage() {
     const { state } = useLocation();
 
     const [user] = useState<User>(state?.user);
