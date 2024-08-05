@@ -1,12 +1,13 @@
 import { useCallback, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { Container, Row, Button } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 import User from "../../models/User";
 import Product from "../../models/Product";
 import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
 import classes from "./LandingPage.module.css";
 import dummyProducts from "../../dummyData/dummyProducts";
+import CustomPagination from "../../components/CustomPagination/CustomPagination";
 
 
 const PRODUCTS_PER_PAGE = 3;//usually all caps means configuration, should never change
@@ -29,25 +30,6 @@ export default function LandingPage() {
         setActivePage(pageNumber);
     },[products]);//this function will be redeclared only if my products change
 
-
-    const generatePagination = useCallback(() => {
-        const pages = [];
-
-        for (let i = 1; i <= totalPages; i++) {
-            pages.push(
-                <li key = {i}>
-                    <Button
-                        className = {activePage === i ? classes.active : ""}
-                        onClick = {() => onPageChangeHandler(i)}>
-                            {i}
-                    </Button>
-                </li>
-            );
-        }
-        
-        return <ul className = {classes.pagination}>{pages}</ul>
-    },[activePage, onPageChangeHandler, totalPages]);//executed only if activePage, totalPages change or onPageChangeHandler is activated
-
  
     return user ? ( 
         <Container>
@@ -56,7 +38,11 @@ export default function LandingPage() {
         </Row>
             <Container>
                 <ProductsGrid products = {productsOnPage} />
-                {generatePagination()}
+                <CustomPagination 
+                    activePage = {activePage} 
+                    totalPages = {totalPages} 
+                    onPageChange = {onPageChangeHandler}//in order to use CustomPagination remember to bring in and define these props 
+                    />
             </Container>
         </Container>
      ) : (<Navigate to = "/account/register" />
