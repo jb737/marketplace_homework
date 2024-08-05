@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-import classes from "./Pagination.module.css";
+import classes from "./CustomPagination.module.css";
 
 interface PaginationProps {
     activePage: number,
