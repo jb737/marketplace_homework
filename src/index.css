@@ -3,15 +3,15 @@
 :root {
     --primary-color-light:  #b7b7b7; 
     --primary-color-dark:  #3d0240;  
-    --secondary-color-light:#fae3e3; 
-    --secondary-color-dark:   #137083; 
+    --secondary-color-light:#7d889b; 
+    --secondary-color-dark:   #547686; 
 }
 
 [data-theme = "dark"] {
-    --primary-color-light: #dbd8e3;
+    --primary-color-light: #858587;
     --primary-color-dark: #2a2438;
-    --secondary-color-light:  #599fbd;
-    --secondary-color-dark:  #5c5470;
+    --secondary-color-light:  #407389;
+    --secondary-color-dark:  #34465c;
 }
 
 
@@ -63,6 +63,18 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color:  red;
 
+}
+
+.btn.btn-secondary {
+    background-color:var( --secondary-color-light);
+}
+
+.btn.btn-secondary:hover {
+    background-color:var( --secondary-color-dark);
+}
+
+[data-theme = ""] .btn.btn-secondary {
+    color: black;
 }
 
 
