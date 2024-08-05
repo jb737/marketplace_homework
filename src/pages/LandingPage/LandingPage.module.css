@@ -3,3 +3,27 @@
     text-align: center;
     color: var(--secondary-color-light);
 }
+
+[data-theme = ""] .title {
+    color: #000;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    gap: 5px;
+}
+
+.pagination button {
+    background-color: var(--secondary-color-light);
+    border: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: var(--primary-color-light)!important;
+}

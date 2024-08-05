@@ -1,4 +1,4 @@
-import { Row, Col, Card, Container } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { useCallback } from "react";
 
 import Product from "../../models/Product";
@@ -55,7 +55,7 @@ export default function ProductsGrid({
 
 
     return  totalRowsCount ? (
-    <Container>{createGrid()}</Container>
+   createGrid()
 ) :  (
     <Row><p>No Products Found.</p></Row>
 );

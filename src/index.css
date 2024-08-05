@@ -43,14 +43,15 @@
 
 .btn.btn-primary{
     background-color:var( --primary-color-dark);
+    border: none;
 }
 
 .btn.btn-primary:hover{
-    background-color: var(--primary-color-light);
+    background-color: slategrey;
 }
 
 .btn.btn-primary:disabled {
-    background-color: gray;
+    background-color: dimgray;
 }
 
 .color_mode_button {
@@ -76,6 +77,7 @@
 [data-theme = ""] .btn.btn-secondary {
     color: black;
 }
+
 
 
 
