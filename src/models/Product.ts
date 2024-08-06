@@ -4,7 +4,7 @@ export default interface Product {
     price: number;
     postedBy: string;
     postedOn: Date;
-    imageUrl: string;
+    images: string[];
     soldOn?: Date;
     description?: string;
     isSold?: boolean;

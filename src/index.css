@@ -2,7 +2,7 @@
 
 :root {
     --primary-color-light:  #b7b7b7; 
-    --primary-color-dark:  #3d0240;  
+    --primary-color-dark:  #3e3e55;  
     --secondary-color-light:#7d889b; 
     --secondary-color-dark:   #547686; 
 }
@@ -76,6 +76,16 @@
 
 [data-theme = ""] .btn.btn-secondary {
     color: black;
+}
+
+.title {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--secondary-color-light);
+}
+
+[data-theme = ""] .title {
+    color: #000;
 }
 
 

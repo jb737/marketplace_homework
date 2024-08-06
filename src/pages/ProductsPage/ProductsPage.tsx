@@ -5,7 +5,6 @@ import { Container, Row } from "react-bootstrap";
 import User from "../../models/User";
 import Product from "../../models/Product";
 import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
-import classes from "./ProductsPage.module.css";
 import dummyProducts from "../../dummyData/dummyProducts";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
 
@@ -16,7 +15,7 @@ export default function ProductsPage() {
     const { state } = useLocation();
 
     const [user] = useState<User>(state?.user);
-    const [products, setProducts] = useState<Product[]>([...dummyProducts]);
+    const [products] = useState<Product[]>([...dummyProducts]);
     const [productsOnPage, setProductsOnPage] = useState<Product[]>(dummyProducts.slice(0, PRODUCTS_PER_PAGE));
     const [activePage, setActivePage] = useState<number>(1);
 
@@ -33,7 +32,7 @@ export default function ProductsPage() {
  
     return user ? ( 
         <Container>
-        <Row className = {classes.title + " mt-4 mb-4"}>
+        <Row className = "title mt-4 mb-4">
             <h1>Welcome to the MERN Shop.</h1>
         </Row>
             <Container>
