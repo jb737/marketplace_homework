@@ -1,20 +1,19 @@
-import { useCallback, useMemo, useState } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { useCallback, useContext, useMemo, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 
-import User from "../../models/User";
 import Product from "../../models/Product";
 import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
 import dummyProducts from "../../dummyData/dummyProducts";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
+import { UserContext } from "../../contexts/UserContext";
 
 
 const PRODUCTS_PER_PAGE = 3;//usually all caps means configuration, should never change
 
 export default function ProductsPage() {
-    const { state } = useLocation();
+    const {user} = useContext(UserContext);
 
-    const [user] = useState<User>(state?.user);
     const [products] = useState<Product[]>([...dummyProducts]);
     const [productsOnPage, setProductsOnPage] = useState<Product[]>(dummyProducts.slice(0, PRODUCTS_PER_PAGE));
     const [activePage, setActivePage] = useState<number>(1);

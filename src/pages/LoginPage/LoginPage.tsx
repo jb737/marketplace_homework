@@ -1,10 +1,11 @@
 import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import classes from "./LoginPage.module.css"
 import FormInput from "../../components/FormInput/FormInput";
 import CustomCard from "../../components/CustomCard/CustomCard";
+import { UserContext } from "../../contexts/UserContext";
 
 
 export default function LoginPage() {
@@ -12,6 +13,7 @@ export default function LoginPage() {
     const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
 
     const navigate = useNavigate();
+    const userContext = useContext(UserContext);
     const [validated, setValidated] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -28,13 +30,23 @@ export default function LoginPage() {
             setValidated(true);
             return;
         }
-    navigate("/", {
-        state: {
-            user: {
-                email,
-            },
+
+    userContext.setUser ({
+        email,
+        firstName: "",
+        lastName: "",
+        dateOfBirth: new Date(),
+        address: {
+            number: "",
+            street: "",
+            city: "",
+            state: "",
+            zip: "",
+            country: "",
         },
-    });
+    })
+
+    navigate("/");
 };
 
 const form =  <Form noValidate validated = {validated} onSubmit = {onSubmitHandler}>
