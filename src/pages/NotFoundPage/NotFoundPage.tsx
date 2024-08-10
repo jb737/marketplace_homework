@@ -1,11 +1,18 @@
 import { Row, } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import classes from "./NotFoundPage.module.css"
+import { useState } from "react";
 
 export default function NotFoundPage() {
-    return <div className = {classes.container + " center"}>
+    const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
+    return (
+        <div className={classes.page_container} data-theme = {theme}>
+    <div className = {classes.container + " center"}>
+        <img  src="src/Assets/shopping-bag.png"/>
         <h2>404</h2>
         <Row><h3>Sorry, your page could not be found</h3></Row>
         <Link type = "button" to = "/">Return to Dashboard</Link>
     </div>
+    </div>
+    )
 }
