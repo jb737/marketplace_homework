@@ -13,7 +13,7 @@ export default function LoginPage() {
     const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
 
     const navigate = useNavigate();
-    const userContext = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
     const [validated, setValidated] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ export default function LoginPage() {
             return;
         }
 
-    userContext.setUser ({
+   setUser ({
         email,
         firstName: "",
         lastName: "",

@@ -1,19 +1,29 @@
-import { useState } from "react";
-import { Navbar, Container, Nav} from "react-bootstrap";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link, Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import { RiAuctionLine } from "react-icons/ri";
 import { TiMessages } from "react-icons/ti";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 
+import { UserContext } from "../../contexts/UserContext";
 import classes from "./Layout.module.css"
 
 
 export default function Layout() {
     const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
 
-    return (
+    const navigate = useNavigate();
+
+    const { user, setUser } = useContext(UserContext);
+
+    const onLogoutClickHandler = () => {
+      setUser(undefined);
+      navigate("/account/login");
+    };
+
+    return user ? (
    
     <div className = {classes.page_container}  data-theme = {theme}>
       <Navbar expand = "lg" className = {classes.navbar}>
@@ -41,8 +51,8 @@ export default function Layout() {
           <Nav  className = {classes.nav_item_container}>
             <NavLink to = "/settings" >
             <IoSettingsOutline />Settings</NavLink>
-            <NavLink to = "/account/login" >
-            <CiLogout />Log Out</NavLink>
+            <button onClick = {onLogoutClickHandler} >
+            <CiLogout />Log Out</button>
 
           </Nav>
         </Navbar.Collapse>
@@ -52,5 +62,6 @@ export default function Layout() {
     <Container fluid><Outlet /></Container>
   
   </div>
+  ) : (<Navigate to = "/account/login" />
   );
 }

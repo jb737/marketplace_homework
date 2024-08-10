@@ -8,20 +8,29 @@
     background-color: var(--primary-color-light);
 }
 
- .nav_item_container a {
+.nav_item_container button {
+   background-color: transparent;
+   border: none;
+}
+
+ .nav_item_container a,
+ .nav_item_container button {
     padding: 0px 15px;
     text-decoration: none;
+    font-size: 18px;
     color:var(--secondary-color-light)
  }
 
- .nav_item_container a:hover {
+ .nav_item_container a:hover,
+ .nav_item_container button:hover {
    padding: 0px 15px;
     text-decoration: none;
     color:var(--primary-color-dark);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
  }
 
- .nav_item_container a svg {
+ .nav_item_container a svg,
+ .nav_item_container button svg {
     margin-right: 5px;
    color:var(--primary-color-dark)
  }

@@ -3,7 +3,7 @@
   background-color:var(--secondary-color-dark);
 }
 
-.submit_btn_container {
+.submit_btn_container { 
    display: flex;
    justify-content: center;
    align-items: center;
