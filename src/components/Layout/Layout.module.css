@@ -25,7 +25,7 @@
 
  .nav_item_container a:hover,
  .nav_item_container button:hover {
-   padding: 10px 15px;/*added padding to stop resizing of menu onHover on smaller screens*/
+   padding: 0px 15px;
     text-decoration: none;
     color:var(--primary-color-dark);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
