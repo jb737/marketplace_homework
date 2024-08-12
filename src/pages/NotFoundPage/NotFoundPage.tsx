@@ -8,8 +8,8 @@ export default function NotFoundPage() {
     return (
         <div className={classes.page_container} data-theme = {theme}>
     <div className = {classes.container + " center"}>
-        <img  src="src/Assets/shopping-bag.png"/>
         <h2>404</h2>
+        <img src = "src/Assets/shopping-bag.png"/>
         <Row><h3>Sorry, your page could not be found</h3></Row>
         <Link type = "button" to = "/">Return to Dashboard</Link>
     </div>

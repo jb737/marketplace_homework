@@ -222,11 +222,12 @@ const SignUpPage = (): JSX.Element => {
     </div>
 </Form>
 
+    const title = <h3>Sign Up:</h3>
     const footer =  <p>Already have an account?<Link to = "/account/login">Log In here:</Link></p>
 
     return ( 
         <div className = {classes.page_container} data-theme = {theme}>
-        <CustomCard title = "Sign-Up:" content = {form} footer = {footer} /> 
+        <CustomCard title = {title} content = {form} footer = {footer} /> 
         </div>
 
 )};

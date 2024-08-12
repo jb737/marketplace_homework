@@ -33,5 +33,6 @@
 }
 
 .container img {
-    height: 300px;
+   max-height: 30vh;
 }
+

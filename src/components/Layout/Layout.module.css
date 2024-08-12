@@ -11,6 +11,8 @@
 .nav_item_container button {
    background-color: transparent;
    border: none;
+   width: 125px;
+   text-align: left;
 }
 
  .nav_item_container a,
@@ -23,7 +25,7 @@
 
  .nav_item_container a:hover,
  .nav_item_container button:hover {
-   padding: 0px 15px;
+   padding: 10px 15px;/*added padding to stop resizing of menu onHover on smaller screens*/
     text-decoration: none;
     color:var(--primary-color-dark);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -38,3 +40,14 @@
  .content_container {
     padding: 10px;
  }
+
+ @media screen and (max-width: 990px) {
+   .nav_item_container a,
+ .nav_item_container button {
+    padding: 10px 0px;
+   
+ }
+   }
+ 
+
+ /*If you are looking for the [data-theme] toggle span etc: if you LOOK you will notice that this code inverts color to white to show up on a dark theme that is really dark.*/
