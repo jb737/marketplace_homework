@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 import { Form, Row, Col, Button, } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -9,13 +9,11 @@ import CustomCard from "../../components/CustomCard/CustomCard";
 import classes from "./SignUpPage.module.css";
 
 
+
 const SignUpPage = (): JSX.Element => {
-
-    const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
-
     const navigate = useNavigate();
-    const [validated, setValidated] = useState(false);
 
+    const [validated, setValidated] = useState(false);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -222,12 +220,13 @@ const SignUpPage = (): JSX.Element => {
     </div>
 </Form>
 
-    const title = <h3>Sign Up:</h3>
-    const footer =  <p>Already have an account?<Link to = "/account/login">Log In here:</Link></p>
+    const footer =  (
+                    <p>Already have an account?<Link to = "/account/login">Log In here:</Link></p>
+                );
 
     return ( 
-        <div className = {classes.page_container} data-theme = {theme}>
-        <CustomCard title = {title} content = {form} footer = {footer} /> 
+        <div className = {classes.page_container}>
+        <CustomCard title = "Sign Up:" content = {form} footer = {footer} /> 
         </div>
 
 )};

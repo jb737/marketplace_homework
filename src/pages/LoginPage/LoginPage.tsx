@@ -9,11 +9,10 @@ import { UserContext } from "../../contexts/UserContext";
 
 
 export default function LoginPage() {
-
-    const [theme] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "");
-
     const navigate = useNavigate();
+   
     const {setUser} = useContext(UserContext);
+
     const [validated, setValidated] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -49,7 +48,8 @@ export default function LoginPage() {
     navigate("/");
 };
 
-const form =  <Form noValidate validated = {validated} onSubmit = {onSubmitHandler}>
+const form = (
+                <Form noValidate validated = {validated} onSubmit = {onSubmitHandler}>
                 <FormInput 
                     title = "E-Mail"
                     type = "email"
@@ -65,13 +65,16 @@ const form =  <Form noValidate validated = {validated} onSubmit = {onSubmitHandl
                 <div className = {classes.submit_btn_container}>
                 <Button style = {{width: "33%"}} type = "submit" disabled = {!email || !password}>Log-In</Button>
                 </div>
-            </Form>
+                </Form>
+            );
 
-const footer = <p>Don't have an account? <Link to = "/account/register">Sign Up Here:</Link></p>
+const footer = (
+                <p>Don't have an account? <Link to = "/account/register">Sign Up Here:</Link></p>
+            );
 
     return (
-        <div className = {classes.page_container} data-theme = {theme}>
+        <div className = {classes.page_container}>
         <CustomCard title = "Log In:" content = {form} footer = {footer} />
         </div>
-    )
+    );
 }

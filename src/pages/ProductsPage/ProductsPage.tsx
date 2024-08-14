@@ -43,8 +43,8 @@ export default function ProductsPage() {
                 <InputGroup>
                     <Form.Control
                         placeholder = "Search"
-                        aria-label = "Search"
-                        aria-describedby = "Search"
+                        aria-label = "Search Products"
+                        aria-describedby = "Search Products"
                     />
                     <Button className = {classes.search_btn} variant ="light"><RiSearchLine /></Button>
                 </InputGroup>
