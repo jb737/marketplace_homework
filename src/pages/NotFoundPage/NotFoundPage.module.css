@@ -21,7 +21,8 @@
 
 .container a {
     border: 1px solid var(--secondary-color-dark);
-    background-color: var(--primary-color-dark);
+    background-color: var(--secondary-color-light);
+    color: white;
     text-decoration: none;
     border-radius: 4px;
     padding: 20px;
