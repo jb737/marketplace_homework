@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 interface FormInputProps {
     id?: string;
     title: string;
-    type: "text" | "email" | "password" | "date";
+    type: "text" | "email" | "password" | "date" | "textarea";
     required?: boolean;
     value?: string | number | Date;
     placeholder?: string;
@@ -38,6 +38,7 @@ export default function FormInput({
                     value = {valueString}
                     placeholder = {placeholder}
                     max = {max}
+                    as = {type === "textarea" ? "textarea" : undefined}
                     onChange = {onChange}
                     onBlur = {onBlur}
                 />
