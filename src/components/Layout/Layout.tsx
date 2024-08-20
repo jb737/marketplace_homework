@@ -34,6 +34,7 @@ export default function Layout() {
               height = "30"
               className = "d-inline-block align-top"
               alt = "MERN Shop logo"
+              title = "Return to Product Listings"
             />
         </Link>
 
@@ -41,8 +42,8 @@ export default function Layout() {
 
       <Navbar.Collapse id = "basic-navbar-nav">
           <Nav className = {classes.nav_item_container+ " me-auto"}>
-            <NavLink to = "/posts">
-            <RiAuctionLine />My Posts</NavLink>
+            <NavLink to = "/myProducts">
+            <RiAuctionLine />My Products</NavLink>
             <NavLink to = "/messages">
             <TiMessages />Messages</NavLink>
           </Nav>

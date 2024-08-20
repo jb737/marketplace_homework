@@ -9,13 +9,14 @@ import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
 import dummyProducts from "../../dummyData/dummyProducts";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
 import classes from "./ProductsPage.module.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 
 const PRODUCTS_PER_PAGE = 3;//usually all caps means configuration, should never change
 
 export default function ProductsPage() {
 
-    const [products] = useState<Product[]>([...dummyProducts]);
+    const [products] = useState<Product[]>([...dummyProducts].sort((a,b) => b.postedOn - a.postedOn));
     const [productsOnPage, setProductsOnPage] = useState<Product[]>(dummyProducts.slice(0, PRODUCTS_PER_PAGE));
     const [activePage, setActivePage] = useState<number>(1);
 
@@ -32,12 +33,10 @@ export default function ProductsPage() {
  
     return  ( 
         <Container>
-        <Row className = "title mt-4 mb-4">
-            <h1>Welcome to the MERN Shop.</h1>
-        </Row>
+            <PageTitle title = "Welcome to the MERN Shop" />
         <Row>
             <Col className = "mb-3">
-                <Link className = {classes.add_product + " btn btn-light"} to = "/me/products">Add a Product</Link>
+                <Link className = {classes.add_product + " btn btn-primary"} to = "/addProduct">Add a Product</Link>
             </Col>
             <Col className = "mb-3">
                 <InputGroup>

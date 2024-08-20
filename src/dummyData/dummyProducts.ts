@@ -1,9 +1,15 @@
+ const date = new Date();
+
+const currentMonth = date.getMonth();
+
+date.setMonth(currentMonth - 3);
+ 
  const dummyProducts =  [
     {id: "1",
      name: "Table",
      price: 100,
      postedBy: "User@email.com",
-     postedOn: new Date(),
+     postedOn: date,
      images: ["https://plus.unsplash.com/premium_photo-1684445034959-b3faeb4597d2?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHRhYmxlfGVufDB8fDB8fHww"],
      description: "Table or some other description",
     },
@@ -11,7 +17,7 @@
      name: "Couch",
      price: 80,
      postedBy: "User2@email.com",
-     postedOn: new Date(),
+     postedOn: date,
      images: ["https://images.unsplash.com/photo-1512212621149-107ffe572d2f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y291Y2h8ZW58MHx8MHx8fDA%3D"],
      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
     },

@@ -93,6 +93,9 @@ body {
     color: #000;
 }
 
+.form-label {
+    color:var(--secondary-color-light);
+}
 
 
 

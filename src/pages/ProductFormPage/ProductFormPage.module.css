@@ -2,3 +2,15 @@
 .description {
     padding: 0px 10px;
 }
+
+.description label {
+    padding: 0px;
+}
+
+.submit_btn {
+    width: 73%;
+}
+
+.submit_btn span {
+    margin-left: 20px;
+}

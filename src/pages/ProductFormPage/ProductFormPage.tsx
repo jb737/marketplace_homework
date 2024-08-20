@@ -1,15 +1,30 @@
-import { useState } from "react";
-import { Col, Container, Form, Row, } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Button, Col, Container, Form, Row, } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { IoSendOutline } from "react-icons/io5";
 import FormInput from "../../components/FormInput/FormInput";
 import classes from "./ProductFormPage.module.css";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
+import dummyProducts from "../../dummyData/dummyProducts";
+import { UserContext } from "../../contexts/UserContext";
+import Product from "../../models/Product";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import { CiCircleCheck } from "react-icons/ci";
+
 
 export default function ProductFormPage() {
 
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+    const { productId } = useParams();
+
+    const product = dummyProducts.find((p) => p.id === productId && p.postedBy === user?.email);
+
     const [isValidated, setIsValidated] = useState(false);
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [description, setDescription] = useState("");
+    const [name, setName] = useState(product?.name || "");
+    const [price, setPrice] = useState(product?.price || "");
+    const [description, setDescription] = useState(product?.description || "");
     const [images, setImages] = useState<File[]>([]);
 
 
@@ -22,22 +37,52 @@ export default function ProductFormPage() {
             setIsValidated(true);
             return;
         }
-    }
+
+        const newProduct: Product = {
+                id: String(dummyProducts.length + 1),
+                name,
+                price: Number(price),
+                postedBy: user!.email,
+                postedOn: new Date(),
+                description,
+                images: images.length > 0 ? images.map((file) => URL.createObjectURL(file)) : ["https://static.vecteezy.com/system/resources/previews/016/916/479/non_2x/placeholder-icon-design-free-vector.jpg"] ,
+        };
+
+        dummyProducts.push(newProduct);
+
+        navigate(`/products/${newProduct.id}`);
+    };
+
+    const submitBtnContent = product ? (
+    <>
+        Save <span><CiCircleCheck /></span>
+    </>
+        ) : (
+    <> Publish<span><IoSendOutline /></span>
+    </>
+    );
 
     return (
     <Container>
-        <Row className = "title mt-5 mb-5">
-        <h1>Add a Product:</h1>
-        </Row>
+        <PageTitle title = "Add A Product:" />
         <Form 
             noValidate 
             validated = {isValidated} 
             onSubmit = {onSubmitHandler} 
             className = "mt-5 mb-5"
         >
+             <div className = "mb-3 text-center">
+                <Button 
+                    className = {classes.submit_btn} 
+                    type = "submit" 
+                    variant = "btn btn-primary">
+                        {submitBtnContent}
+                </Button>
+            </div>
             <Row>
                 <Col>
                 <FormInput
+                    required
                     title = "Product Name"
                     type = "text"
                     value = {name}
@@ -46,6 +91,7 @@ export default function ProductFormPage() {
                 </Col>
                 <Col>
                 <FormInput
+                    required
                     title = "Price"
                     type = "text"
                     value = {price}

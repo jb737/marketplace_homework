@@ -5,6 +5,7 @@ import { Carousel, Container, Row, Image } from "react-bootstrap";
 import Product from "../../models/Product";
 import dummyProducts from "../../dummyData/dummyProducts";
 import classes from "./ProductDetailsPage.module.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 
 export default function ProductDetailsPage() {
@@ -14,9 +15,7 @@ export default function ProductDetailsPage() {
 
     return product? (
         <Container>
-            <Row className = "mt-3 mb-3">
-                <h3 className = "title">{product.name}</h3>
-            </Row>
+            <PageTitle title = {product.name} />
             <Row>
             <Carousel slide = {false}>
                 {product.images.map((imageUrl, i) => (
