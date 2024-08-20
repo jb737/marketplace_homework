@@ -40,6 +40,13 @@
  .content_container {
     padding: 10px;
  }
+.switch {
+   color: var(--secondary-color-light);
+   padding: 0px 15px;
+   text-decoration: none;
+   font-size: 18px;
+   margin-top: 5px;
+}
 
  @media screen and (max-width: 990px) {
    .nav_item_container a,
