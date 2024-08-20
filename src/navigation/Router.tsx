@@ -16,7 +16,7 @@ const routes = createRoutesFromElements(
                 <Route index element = {<ProductsPage />} />
                 <Route path = "products/:productId" element = {<ProductDetailsPage />} /> 
                 <Route path = "addProduct/:productId?" element = {<ProductFormPage />} /> 
-                <Route path = "myProducts" element = {<MyProductsPage />} />     
+                <Route path = "myProducts" element = {<MyProductsPage />} /> 
         </Route>
 
         <Route path = "/account">
