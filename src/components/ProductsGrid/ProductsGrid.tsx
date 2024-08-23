@@ -40,7 +40,7 @@ export default function ProductsGrid({
                                         </Card.Text>
                                     <Link className = "btn btn-secondary" to = {`/products/${product.id}`}>Check It Out</Link>
                                 </Card.Body>
-                                <Card.Footer className = {classes.card_footer +" text-muted"}>Posted on: {product.postedOn.toDateString()}</Card.Footer>
+                                <Card.Footer className = {classes.card_footer +" text-muted"}>Posted on: {new Date(product.postedOn).toDateString()}</Card.Footer>
                         </Card>
                     </Col>
                 )}

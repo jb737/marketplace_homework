@@ -6,7 +6,6 @@ import { IoSendOutline } from "react-icons/io5";
 import FormInput from "../../components/FormInput/FormInput";
 import classes from "./ProductFormPage.module.css";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
-import dummyProducts from "../../dummyData/dummyProducts";
 import { UserContext } from "../../contexts/UserContext";
 import Product from "../../models/Product";
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -19,7 +18,7 @@ export default function ProductFormPage() {
     const navigate = useNavigate();
     const { productId } = useParams();
 
-    const product = dummyProducts.find((p) => p.id === productId && p.postedBy === user?.email);
+    const product = undefined;
 
     const [isValidated, setIsValidated] = useState(false);
     const [name, setName] = useState(product?.name || "");
@@ -39,7 +38,7 @@ export default function ProductFormPage() {
         }
 
         const newProduct: Product = {
-                id: String(dummyProducts.length + 1),
+                id:"",
                 name,
                 price: Number(price),
                 postedBy: user!.email,
@@ -47,8 +46,6 @@ export default function ProductFormPage() {
                 description,
                 images: images.length > 0 ? images.map((file) => URL.createObjectURL(file)) : ["https://static.vecteezy.com/system/resources/previews/016/916/479/non_2x/placeholder-icon-design-free-vector.jpg"] ,
         };
-
-        dummyProducts.push(newProduct);
 
         navigate(`/products/${newProduct.id}`);
     };

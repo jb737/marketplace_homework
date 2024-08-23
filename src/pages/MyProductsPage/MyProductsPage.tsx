@@ -7,28 +7,25 @@ import { MdOutlineDelete } from "react-icons/md";
 
 import { UserContext } from "../../contexts/UserContext";
 import Product from "../../models/Product";
-import dummyProducts from "../../dummyData/dummyProducts";
 import classes from "./MyProductsPage.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function MyProductsPage() {
     const {user} = useContext(UserContext);
     const navigate = useNavigate();
-    const [myProducts, setMyProducts] = useState<Product[]>(
-        dummyProducts.filter(p => p.postedBy === user?.email)
-    );
+    const [myProducts, setMyProducts] = useState<Product[]>([]);
 
     const onDeleteProductClickHandler = (productId: string) => {
-        const productIndex = dummyProducts.findIndex((p) => p.id === productId);
+        //const productIndex = dummyProducts.findIndex((p) => p.id === productId);
 
-        if (productIndex === -1) {
-            return;
-        }
+        //if (productIndex === -1) {
+            //return;
+        //}
 
-        dummyProducts.splice(productIndex, 1);
+        //dummyProducts.splice(productIndex, 1);
 
-        setMyProducts(dummyProducts.filter((p) => p.postedBy === user?.email));
-    }
+        //setMyProducts(dummyProducts.filter((p) => p.postedBy === user?.email));
+    };
 
     return(
         <Container>

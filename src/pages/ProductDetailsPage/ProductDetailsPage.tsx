@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Carousel, Container, Row, Image } from "react-bootstrap";
 
 import Product from "../../models/Product";
-import dummyProducts from "../../dummyData/dummyProducts";
 import classes from "./ProductDetailsPage.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
@@ -11,7 +10,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 export default function ProductDetailsPage() {
     const { productId } = useParams();
 
-    const [product] = useState<Product | undefined>(dummyProducts.find((p) => p.id === productId));
+    const [product] = useState<Product | undefined>();
 
     return product? (
         <Container>
