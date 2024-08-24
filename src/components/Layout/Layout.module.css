@@ -52,7 +52,11 @@
    .nav_item_container a,
  .nav_item_container button {
     padding: 10px 0px;
-   
+ }
+
+ .nav_item_container a:hover,
+ .nav_item_container button:hover {
+   padding: 10px 0px;
  }
    }
  
