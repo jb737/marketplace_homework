@@ -16,12 +16,14 @@ const productsService = {
         return response.data;
     },
 
-    updateProduct:  async (product: Product): Promise<Product> => {
-        const response = await httpClient.put(BASE_PATH, product);
-        return response.data;
+    deleteProduct: async(productId: number): Promise<void> =>{
+        await httpClient.delete(`${BASE_PATH}/${productId}`)
     },
 
-    
+    updateProduct:  async (product: Product): Promise<Product> => {
+        const response = await httpClient.put(`${BASE_PATH}/${product.id}`, product);
+        return response.data;
+    },
 };
 
 export default productsService;
