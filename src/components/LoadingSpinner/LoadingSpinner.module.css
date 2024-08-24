@@ -1,0 +1,5 @@
+.spinner {
+    height: 90px;
+    width: 90px;
+   color: var(--primary-color-light);
+}

@@ -1,0 +1,10 @@
+.container {
+    position: center;
+    top: 80px;
+    left: 10px;
+    z-index: 100;
+}
+
+.alert {
+    text-align: center;
+}
