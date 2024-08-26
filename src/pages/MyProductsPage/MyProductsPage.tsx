@@ -24,7 +24,7 @@ export default function MyProductsPage() {
     useEffect(() => {
         const getUsersProducts = async () => {
             try {
-                const products = await usersService.getUserProducts(1);
+                const products = await usersService.getUserProducts(user!.id);
                 setMyProducts(products);
             } catch (error) {
                 setHasError(true);
@@ -35,14 +35,22 @@ export default function MyProductsPage() {
         };
 
         getUsersProducts();
-    }, []);
+    }, [user]);
 
     const onDeleteProductClickHandler = async (productId: number) => {
-       await productsService.deleteProduct(productId);
-       setMyProducts(prev => {
-        return prev.filter(product => product.id != product.id);
-       })
+        try {
+            setIsLoading(true);
+            await productsService.deleteProduct(productId);
+            setMyProducts(prev => {
+             return prev.filter(product => product.id != product.id);
+            });
+        } catch (error) {
+            setHasError(true);
+        } finally {
+            setIsLoading(false);
+        }
     };
+
 
     const pageContent = isLoading ? (
         <LoadingSpinner />

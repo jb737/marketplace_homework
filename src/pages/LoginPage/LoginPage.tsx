@@ -31,6 +31,7 @@ export default function LoginPage() {
         }
 
    setUser ({
+        id: 1,
         email,
         firstName: "",
         lastName: "",
