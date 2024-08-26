@@ -2,7 +2,8 @@ export default interface Product {
     id: number;
     name: string;
     price: number;
-    postedBy: string;
+    ownerId: number ;
+    ownerEmail: string;
     postedOn: Date;
     images: string[];
     soldOn?: Date;
